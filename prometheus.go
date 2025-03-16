@@ -545,7 +545,9 @@ func fetchZoneAnalytics(zones []cloudflare.Zone, wg *sync.WaitGroup) {
 		z := z
 
 		addHTTPGroups(&z, name, account)
-		addFirewallGroups(&z, name, account)
+		// Disabled collecting firewall groups to allow use limited access account (no firewall groups)
+		// ToDo: make it configurable, not hardcoded disabling
+		// addFirewallGroups(&z, name, account)
 		addHealthCheckGroups(&z, name, account)
 		addHTTPAdaptiveGroups(&z, name, account)
 	}
